@@ -11,16 +11,12 @@
   },
   "private": true,
   "dependencies": {
-
-    
-    "@angular/cli": "~9.1.5",
-    "@angular/compiler-cli": "~9.1.6",
-    "typescript": "~3.8.3",
-
     "@angular/animations": "~9.1.6",
     "@angular/cdk": "^9.2.4",
+    "@angular/cli": "~9.1.5",
     "@angular/common": "~9.1.6",
     "@angular/compiler": "~9.1.6",
+    "@angular/compiler-cli": "~9.1.6",
     "@angular/core": "~9.1.6",
     "@angular/forms": "~9.1.6",
     "@angular/material": "^9.2.4",
@@ -28,12 +24,15 @@
     "@angular/platform-browser-dynamic": "~9.1.6",
     "@angular/router": "~9.1.6",
     "bootstrap": "^4.5.0",
+    "jquery": "^3.5.1",
     "morgan": "^1.10.0",
+    "popper.js": "^1.16.1",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
+    "typescript": "~3.8.3",
     "zone.js": "~0.10.2"
   },
-  "devDependencies": {    
+  "devDependencies": {
     "@angular-devkit/build-angular": "~0.901.5",
     "@types/node": "^12.11.1",
     "@types/jasmine": "~3.5.0",

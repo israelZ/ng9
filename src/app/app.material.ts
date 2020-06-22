@@ -53,7 +53,8 @@ import {MatSidenavModule} from '@angular/material/sidenav';
         MatTreeModule,
         MatRadioModule,
         MatTableModule,
-        MatExpansionModule
+        MatExpansionModule,
+        MatCheckboxModule
 
     ],
     exports:[
@@ -63,7 +64,8 @@ import {MatSidenavModule} from '@angular/material/sidenav';
             MatTreeModule,
             MatRadioModule,
             MatTableModule,
-            MatExpansionModule
+            MatExpansionModule,
+            MatCheckboxModule
         ]
 
      })

@@ -1,0 +1,50 @@
+.waze{
+    background-color:#78BED1
+}
+
+.moovit{
+
+    background-color:#DB4E23
+}
+
+.card-he{
+    display:flex; 
+    flex-direction: row-reverse;
+    padding-right: 10px;
+    font-family: 'Assistant', sans-serif;
+}
+
+.card-en{
+    display:flex; 
+    flex-direction: row; 
+
+}
+
+.list-he{
+    display: flex;
+    flex-direction: row-reverse;
+     justify-content: space-evenly; 
+     font-family: 'Assistant', sans-serif;
+}
+.list-en{
+    display: flex; 
+     justify-content: space-evenly; 
+     font-family: 'Raleway', sans-serif;
+
+}
+
+
+.pasport-en{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex: auto;
+}
+.pasport-he{
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    flex: auto;
+    font-family: 'Assistant', sans-serif;
+}
+/*  */

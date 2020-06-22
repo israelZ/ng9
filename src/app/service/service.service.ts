@@ -11,9 +11,13 @@ export class ServiceService {
   constructor(public http:HttpClient) { }
 
 
-  getUsers()
+  getUsersEn()
   {
-    return this.http.get('api/users')
+    return this.http.get('api/users_en')
+  }
+  getUsersHe()
+  {
+    return this.http.get('api/users_he')
   }
 
   }
