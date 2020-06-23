@@ -26,22 +26,35 @@ export class HomeComponent implements OnInit {
 
   showUser(user)
   {
-    this.userShow= user 
+    if(user !=null)
+    {
+      this.userShow= user 
+    }
+    else
+    console.log("user is null");
   }
-  showUserSm(user)
-  {
-    this.userShow=user
-    
-    window.scrollTo(0,0)
-  }
+  
 
   openMoovit(){
 
-    window.open('https://moovit.com/?to='+this.userShow['adress_moov']+'&tll='+this.userShow['la']+'_'+this.userShow['lo']+'&metroId=121&lang=he')
+    try {
+      window.open('https://moovit.com/?to='+this.userShow['adress_moov']+'&tll='+this.userShow['la']+'_'+this.userShow['lo']+'&metroId=121&lang=he')
+      
+    } catch (error) 
+    {
+      console.log(error);  
+    }
+
   }
 
-  openWaze(){
-    window.open('https://www.waze.com/ul?ll='+this.userShow['la']+'%2C'+this.userShow['lo']+'&navigate=yes&zoom=17')
+  openWaze()
+  {
+    try {
+      window.open('https://www.waze.com/ul?ll='+this.userShow['la']+'%2C'+this.userShow['lo']+'&navigate=yes&zoom=17')
+    } catch (error) 
+    {
+      console.log(error);  
+    }
   }
 
   darkLight()
@@ -51,9 +64,14 @@ export class HomeComponent implements OnInit {
 
   changeLanguage(lan)
   {
-    
+    if (lan==null)
+    {
+      console.log('The language is undefined');
+      return
+    }
     
     this.language=lan
+
     this.userShow=null
     switch (lan) 
     {
@@ -63,7 +81,7 @@ export class HomeComponent implements OnInit {
       case 'he':
       this.listUsers= this.service.getUsersHe()
         break;
-    
+        console.log("The language is undefined");
       default:
         break;
     }

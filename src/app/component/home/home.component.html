@@ -23,8 +23,8 @@
                 <div class="py-1 px-1" [ngClass]="language=='he'?'text-right pasport-he':'pasport-en'">
                     <i style="font-size: x-large;" class="pt-2 mr-2 fas fa-portrait"></i>
                     <div class="px-2 pt-2">
-                        {{item.firsrname}}
                         {{item.lastname}}
+                        {{item.firsrname}}
                     </div>
 
                     <button type="button" class="btn" (click)="showUser(item)"
@@ -45,12 +45,17 @@
                     <div [ngClass]="language=='he' ? 'card-he' : 'card-en' ">
                         <div>
                             <div class="card-body" [ngClass]="language=='he'?'pr-1':''">
-                                <div class="py-2">{{userShow.lastname}}
-                                    {{userShow.firsrname}}
+                                <div class="py-2" style="font-size: larger;">
+                                    <b>
+                                        {{userShow.lastname}}
+                                        {{userShow.firsrname}}
+                                    </b>
                                 </div>
                                 <div>
-                                    <span *ngIf="language=='en'">Summary</span>
-                                    <span *ngIf="language=='he'">רקע כללי</span>
+                                    <b>
+                                        <span *ngIf="language=='en'">Summary</span>
+                                        <span *ngIf="language=='he'">רקע כללי</span>
+                                    </b>
                                 </div>
                                 <div>{{userShow.Summary}}</div>
                             </div>
@@ -60,29 +65,46 @@
                                 [ngClass]="language=='he'?'pr-1':''">
                                 <li class="border-bottom pb-1 mb-1"
                                     [ngClass]=" observDarkLight ? 'border-primary' : 'border-white'">
-                                    <span *ngIf="language=='en'">Parents</span>
-                                    <span *ngIf="language=='he'">הורים</span>
-                                    {{userShow.dad}} {{userShow.mom}} {{userShow.lastname}}</li>
+                                    <b>
+                                        <span *ngIf="language=='en'">Parents</span>
+                                        <span *ngIf="language=='he'">הורים</span>
+                                    </b>
+                                    {{userShow.dad}}
+                                    <span *ngIf="language=='en'">&</span>
+                                    {{userShow.mom}} {{userShow.lastname}}</li>
 
                                 <li class="border-bottom pb-1 mb-1"
                                     [ngClass]=" observDarkLight ? 'border-primary' : 'border-white'">
-                                    <span *ngIf="language=='en'">Date of birth:</span>
-                                    <span *ngIf="language=='he'">תאריך לידה:</span>
+                                    <b>
+                                        <span *ngIf="language=='en'">Date of birth</span>
+                                        <span *ngIf="language=='he'">תאריך לידה</span>
+                                    </b>
                                     {{userShow.date_born}} <br>
 
-                                    <span *ngIf="language=='en'">Date of death:</span>
-                                    <span *ngIf="language=='he'">תאריך פטירה:</span>
+                                    <b>
+                                        <span *ngIf="language=='en'">Date of death:</span>
+                                        <span *ngIf="language=='he'">תאריך פטירה:</span>
+                                    </b>
                                     {{userShow.date_dead}} <br>
 
-                                    <span *ngIf="language=='en'">Age</span>
-                                    <span *ngIf="language=='he'">גיל</span>:{{userShow.age}}</li>
+                                    <b>
+                                        <span *ngIf="language=='en'">Age</span>
+                                        <span *ngIf="language=='he'">גיל</span>
+                                    </b>
+
+                                    {{userShow.age}}</li>
                                 <li class="border-bottom pb-1 mb-1"
                                     [ngClass]=" observDarkLight ? 'border-primary' : 'border-white'">
-                                    <span *ngIf="language=='en'">Country of Birth:</span>
-                                    <span *ngIf="language=='he'">ארץ מוצא:</span>
+                                    <b>
+                                        <span *ngIf="language=='en'">Country of Birth</span>
+                                        <span *ngIf="language=='he'">ארץ מוצא</span>
+                                    </b>
                                     {{userShow.cuntry_born}}</li>
-                                <li><span *ngIf="language=='en'">Graveyard:</span>
-                                    <span *ngIf="language=='he'">בית קברות:</span>
+                                <li>
+                                    <b>
+                                        <span *ngIf="language=='en'">Graveyard:</span>
+                                        <span *ngIf="language=='he'">בית קברות:</span>
+                                    </b>
                                     {{userShow.adress_dead}}</li>
                             </ul>
 
@@ -109,36 +131,35 @@
 </div>
 
 <div class="d-block d-md-none h-100">
-    <mat-drawer-container class="h-100" autosize
-    [ngClass]="observDarkLight ? 'bg-light':'bg-dark text-white'">
+    <mat-drawer-container class="h-100" autosize [ngClass]="observDarkLight ? 'bg-light':'bg-dark text-white'">
+        <div id="haed"></div>
         <mat-drawer #drawer class="example-sidenav" mode="over"
             [ngClass]="observDarkLight ? 'bg-light':'text-white bg-secondary'">
 
-            <div style="display: flex; justify-content: center; flex-direction: column;"
-             class="m-3 mt-5">
+            <div style="display: flex; justify-content: center; flex-direction: column;" class="m-3 mt-5">
 
                 <div>
                     <select (change)="changeLanguage($event.target.value)" class="custom-select mr-sm-2">
-                    <option value='he'>עברית</option>
-                    <option value='en' selected="selected">English</option>
-                </select>
-            </div>
-            
-            <div class="mt-3">
-                <div class="custom-control custom-radio">
-                    <input type="radio" id="DarkR" name="customRadio" class="custom-control-input"
-                    (change)="darkLight()">
-                    <label class="custom-control-label" for="DarkR">Dark</label>
+                        <option value='he'>עברית</option>
+                        <option value='en' selected="selected">English</option>
+                    </select>
                 </div>
-                <div class="my-2"></div>
-                <div class="custom-control custom-radio">
-                    <input type="radio" id="LightR" name="customRadio" class="custom-control-input" checked
-                    (change)="darkLight()">
-                    <label class="custom-control-label" for="LightR">Light</label>
+
+                <div class="mt-3">
+                    <div class="custom-control custom-radio">
+                        <input type="radio" id="DarkR" name="customRadio" class="custom-control-input"
+                            (change)="darkLight()">
+                        <label class="custom-control-label" for="DarkR">Dark</label>
+                    </div>
+                    <div class="my-2"></div>
+                    <div class="custom-control custom-radio">
+                        <input type="radio" id="LightR" name="customRadio" class="custom-control-input" checked
+                            (change)="darkLight()">
+                        <label class="custom-control-label" for="LightR">Light</label>
+                    </div>
                 </div>
             </div>
-        </div>
-            
+
         </mat-drawer>
         <button class="pt-2 pl-2" type="button" mat-button (click)="drawer.toggle()">
             <i class="fas fa-user-cog"></i>
@@ -147,21 +168,27 @@
 
         <div style="display: flex; flex-direction: column;  align-items:center"
             [ngClass]="language=='he'?'text-right':''">
-        
-<div id="haed"></div>
+
+
             <div *ngIf="userShow">
-                <div class="card m-5 shadow-sm" style="display:flex; font-family: 'Assistant', sans-serif;" id="scrollId"
+                <div class="card m-5 shadow-sm" style="display:flex; font-family: 'Assistant', sans-serif;"
+                    id="scrollId"
                     [ngClass]="observDarkLight ? 'bg-light':'text-white bg-secondary border border-danger'">
                     <div>
                         <img [src]=userShow.gravestone class="img-fluid" alt="...">
                     </div>
                     <div>
                         <div class="card-body">
-                            <div style="font-size:x-large;" class="py-2">{{userShow.lastname}} {{userShow.firsrname}}
+                            <div style="font-size:larger;" class="py-2">
+                                <b>
+                                    {{userShow.lastname}} {{userShow.firsrname}}
+                                </b>
                             </div>
                             <div>
-                                <span *ngIf="language=='en'">Summary</span>
-                                <span *ngIf="language=='he'">רקע כללי</span>
+                                <b>
+                                    <span *ngIf="language=='en'">Summary</span>
+                                    <span *ngIf="language=='he'">רקע כללי</span>
+                                </b>
                             </div>
                             <div style="font-size: larger;">{{userShow.Summary}}</div>
                         </div>
@@ -169,31 +196,46 @@
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item"
                                 [ngClass]="observDarkLight ? 'bg-light':'text-white bg-secondary'">
-                                <span *ngIf="language=='en'">Parents</span>
-                                <span *ngIf="language=='he'">הורים</span>
-                                {{userShow.dad}} {{userShow.mom}} {{userShow.lastname}}
+                                <b>
+                                    <span *ngIf="language=='en'">Parents</span>
+                                    <span *ngIf="language=='he'">הורים</span>
+                                </b>
+                                {{userShow.dad}}
+                                <span *ngIf="language=='en'">&</span>
+                                {{userShow.mom}}
+                                {{userShow.lastname}}
                             </li>
                             <li class="list-group-item"
                                 [ngClass]="observDarkLight ? 'bg-light':'text-white bg-secondary'">
-                                <span *ngIf="language=='en'">Date of birth:</span>
-                                <span *ngIf="language=='he'">תאריך לידה:</span>
+                                <b>
+                                    <span *ngIf="language=='en'">Date of birth</span>
+                                    <span *ngIf="language=='he'">תאריך לידה</span>
+                                </b>
                                 {{userShow.date_born}}
                                 <br>
-                                <span *ngIf="language=='en'">Date of death:</span>
-                                <span *ngIf="language=='he'">תאריך פטירה:</span>
+                                <b>
+                                    <span *ngIf="language=='en'">Date of death</span>
+                                    <span *ngIf="language=='he'">תאריך פטירה</span>
+                                </b>
                                 {{userShow.date_dead}} <br>
-                                <span *ngIf="language=='en'">Age:</span>
-                                <span *ngIf="language=='he'">גיל:</span>
+                                <b>
+                                    <span *ngIf="language=='en'">Age</span>
+                                    <span *ngIf="language=='he'">גיל</span>
+                                </b>
                                 {{userShow.age}}</li>
                             <li class="list-group-item"
                                 [ngClass]="observDarkLight ? 'bg-light':'text-white bg-secondary'">
-                                <span *ngIf="language=='en'">Country of Birth:</span>
-                                <span *ngIf="language=='he'">ארץ מוצא:</span>
+                                <b>
+                                    <span *ngIf="language=='en'">Country of Birth</span>
+                                    <span *ngIf="language=='he'">ארץ מוצא</span>
+                                </b>
                                 {{userShow.cuntry_born}}</li>
                             <li class="list-group-item"
                                 [ngClass]="observDarkLight ? 'bg-light':'text-white bg-secondary'">
-                                <span *ngIf="language=='en'">Graveyard:</span>
-                                <span *ngIf="language=='he'">בית קברות:</span>
+                                <b>
+                                    <span *ngIf="language=='en'">Graveyard</span>
+                                    <span *ngIf="language=='he'">בית קברות</span>
+                                </b>
                                 {{userShow.adress_dead}}</li>
                         </ul>
 
@@ -210,22 +252,19 @@
             </div>
             <div style=" width: 70%;">
                 <div class="shadow-sm p-2 m-4 rounded form-inline" *ngFor="let item of (listUsers | async )"
-                
                     [ngClass]="observDarkLight ? 'bg-light':'text-white bg-secondary border border-warning'">
                     <div [ngClass]="language=='he'?'text-right pasport-he':'pasport-en'">
                         <i style="font-size: large" class="pt-2 mr-2 fas fa-portrait"></i>
                         <div class="pt-2">
-                            {{item.firsrname}}
                             {{item.lastname}}
+                            {{item.firsrname}}
                         </div>
                         <!-- <div class="mx-2">
                     </div> -->
-                    <a href="#haed">
-                        <button mat-mini-fab color="primary"><i class="fas fa-info"
-                            
-                            (click)="showUserSm(item)"></i>
+                        <a href="#haed">
+                            <button mat-mini-fab color="primary"><i class="fas fa-info" (click)="showUser(item)"></i>
                             </button>
-                    </a>
+                        </a>
                     </div>
                 </div>
             </div>
